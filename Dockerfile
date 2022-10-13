@@ -1,9 +1,13 @@
-FROM tiangolo/uvicorn-gunicorn:python3.7
+FROM python:3.10-buster
 
-# Copy function code
-COPY main.py requirements.txt /app/
+ENV LANG C.UTF-8
+ENV TZ Asia/Tokyo
 
-# Install the function's dependencies using file requirements.txt
-RUN pip install --no-cache-dir -r /app/requirements.txt
+WORKDIR /app
 
-# The remaining setup is performed by the parent template.
+COPY ./requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
+COPY ./src/ ./
+
+ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000", "--reload"]

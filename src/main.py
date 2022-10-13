@@ -284,17 +284,17 @@ def test():
     return HealthCheck()
 
 
-handler = Mangum(app)
+# handler = Mangum(app)
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
-    import uvicorn
+#     import uvicorn
 
-    parser = argparse.ArgumentParser(description='Runs the API locally.')
-    parser.add_argument('--port',
-                        help='The port to listen for requests on.',
-                        type=int,
-                        default=8080)
-    args = parser.parse_args()
-    configure_logging()
-    uvicorn.run(app, host='0.0.0.0', port=args.port)
+#     parser = argparse.ArgumentParser(description='Runs the API locally.')
+#     parser.add_argument('--port',
+#                         help='The port to listen for requests on.',
+#                         type=int,
+#                         default=8080)
+#     args = parser.parse_args()
+#     configure_logging()
+#     uvicorn.run(app, host='0.0.0.0', port=args.port)
